@@ -59,4 +59,4 @@ stages:
             azureSubscription: 'Visual Studio Professional (3439d425-8223-42a7-8ca3-27c24ff681f4)'
             appType: 'apiApp'
             WebAppName: 'demoservice1'
-            packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+            packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
