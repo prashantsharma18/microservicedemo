@@ -60,4 +60,16 @@ stages:
             appType: 'apiApp'
             WebAppName: 'demoservice1'
             packageForLinux: '$(System.DefaultWorkingDirectory)/**/Service1.API.zip'
-        
+        - task: AzureAppServiceSettings@1
+          inputs:
+            azureSubscription: 'Visual Studio Professional (3439d425-8223-42a7-8ca3-27c24ff681f4)'
+            appName: 'demoservice1'
+            resourceGroupName: 'rgcicdwin'
+            appSettings: |
+              [
+                 {
+                  "name": "Service2Url",
+                  "value": "http://localhost:50884/api/v1/service2",
+                  "slotSetting": false
+                 }
+              ]
