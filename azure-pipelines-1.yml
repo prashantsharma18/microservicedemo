@@ -51,7 +51,7 @@ stages:
           inputs:
             buildType: 'current'
             downloadType: 'specific'
-            itemPattern: 'drop/Service1.API.zip'
+            itemPattern: 'drop/*.zip'
             downloadPath: '$(System.DefaultWorkingDirectory)'
         - task: AzureRmWebAppDeployment@4
           inputs:
@@ -60,6 +60,13 @@ stages:
             appType: 'apiApp'
             WebAppName: 'demoservice1'
             packageForLinux: '$(System.DefaultWorkingDirectory)/**/Service1.API.zip'
+        - task: AzureRmWebAppDeployment@4
+          inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'Visual Studio Professional (3439d425-8223-42a7-8ca3-27c24ff681f4)'
+            appType: 'apiApp'
+            WebAppName: 'demoSvc2'
+            packageForLinux: '$(System.DefaultWorkingDirectory)/**/Service2.API.zip'
         - task: AzureAppServiceSettings@1
           inputs:
             azureSubscription: 'Visual Studio Professional (3439d425-8223-42a7-8ca3-27c24ff681f4)'
@@ -69,7 +76,7 @@ stages:
               [
                  {
                   "name": "Service2Url",
-                  "value": "http://localhost:50884/api/v1/service2",
+                  "value": "https://demosvc2.azurewebsites.net/api/v1/service2",
                   "slotSetting": false
                  }
               ]
