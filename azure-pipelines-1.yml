@@ -44,7 +44,8 @@ stages:
   - stage:
     jobs:
       - job: 'DevDeploy'
-        pool: 'windows-latest'
+        pool:
+          vmImage: 'windows-latest'
         steps:
         - task: DownloadBuildArtifacts@0
           inputs:
