@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
@@ -41,4 +41,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'FilePath'
-    TargetPath: '$(build.artifactstagingdirectory)'
+    TargetPath: '$(Build.ArtifactStagingDirectory)'
