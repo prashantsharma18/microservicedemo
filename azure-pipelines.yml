@@ -36,9 +36,9 @@ steps:
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-restore'
   displayName: 'Publish Services'
 
-- task: Bash@3
+- task: PublishBuildArtifacts@1
   inputs:
-    targetType: 'inline'
-    script: 'ls -1 $(Build.ArtifactStagingDirectory)'
-
-
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'FilePath'
+    TargetPath: '$(build.artifactstagingdirectory)'
