@@ -29,3 +29,11 @@ steps:
     arguments: '--no-restore'
   displayName: 'Build Packages'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    arguments: '--configuration $(buildConfiguration) --no-restore'
+    zipAfterPublish: false
+    modifyOutputPath: false
+  displayName: 'Publish CustomerApi'
