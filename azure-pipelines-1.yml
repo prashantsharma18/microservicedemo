@@ -52,11 +52,12 @@ stages:
             buildType: 'current'
             downloadType: 'specific'
             itemPattern: 'drop/Service1.API.zip'
-            downloadPath: '$(System.ArtifactsDirectory)'
+            downloadPath: '$(System.DefaultWorkingDirectory)'
         - task: AzureRmWebAppDeployment@4
           inputs:
             ConnectionType: 'AzureRM'
             azureSubscription: 'Visual Studio Professional (3439d425-8223-42a7-8ca3-27c24ff681f4)'
             appType: 'apiApp'
             WebAppName: 'demoservice1'
-            packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
+            packageForLinux: '$(System.DefaultWorkingDirectory)/**/Service1.API.zip'
+        
