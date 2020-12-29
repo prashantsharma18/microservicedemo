@@ -32,13 +32,11 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    publishWebProjects: false
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-restore'
-  displayName: 'Publish Services'
+    publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output "$(build.artifactstagingdirectory)"'
+  displayName: 'Publish'
 
 - task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'FilePath'
-    TargetPath: '$(Build.ArtifactStagingDirectory)'
